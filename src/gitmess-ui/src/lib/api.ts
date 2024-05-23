@@ -15,3 +15,7 @@ export async function getRepositoryTree(repo: string, branch: string, path: stri
 	const response = await fetch(url);
 	return await response.json();
 }
+
+export async function deleteRepository() {
+	
+}

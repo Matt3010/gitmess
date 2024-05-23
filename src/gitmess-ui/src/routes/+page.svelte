@@ -2,6 +2,7 @@
 	import { getRepositories } from '$lib/api';
 	import type { GitRepository } from '$lib/models/api.model';
 	import { onMount } from 'svelte';
+	import DeleteRepo from '$lib/components/DeleteRepo.svelte';
 
 	let repositories: GitRepository[] = [];
 
@@ -18,11 +19,14 @@
 		<nav class="list-nav">
 			<ul>
 				{#each repositories as repository}
-					<li>
-						<a href="/repositories/{repository.name}/tree/main">
-							<span class="badge">📁</span>
-							<span class="flex-auto">{repository.name}</span>
+					<li class="flex">
+						<a href="/repositories/{repository.name}/tree/main" class="w-full">
+							<div>
+								<span class="badge">📁</span>
+								<span class="flex-auto">{repository.name}</span>
+							</div>
 						</a>
+						<DeleteRepo repoName={repository.name} />
 					</li>
 				{/each}
 			</ul>
